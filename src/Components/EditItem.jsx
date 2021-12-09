@@ -1,8 +1,5 @@
 import { useState } from "react";
 import {
-  Modal,
-  ModalHeader,
-  ModalBody,
   Toast,
   ToastHeader,
   ToastBody,
