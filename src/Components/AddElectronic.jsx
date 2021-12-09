@@ -75,8 +75,29 @@ const AddElectronic = ({
                 />
               </FormGroup>
             </Col>
+            <Col md={6}>
+              <FormGroup>
+                <Label for="color">Color</Label>
+                <Input
+                  id="color"
+                  name="color"
+                  placeholder="Enter color"
+                  min="1"
+                  type="color"
+                  onChange={handleChange}
+                />
+              </FormGroup>
+            </Col>
           </Row>
-          <Button disabled={!(inputVal["itemName"] && inputVal["quantity"])}>
+          <Button
+            disabled={
+              !(
+                inputVal["itemName"] &&
+                inputVal["quantity"] &&
+                inputVal["color"]
+              )
+            }
+          >
             Add
           </Button>
         </Form>

@@ -20,6 +20,7 @@ const EditItem = ({
   setUpdateModalOpen,
   editedDetails,
   changeData,
+  setUpdateItemData,
 }) => {
   const [editValues, setEditValues] = useState(editedDetails);
   const handleChange = (event) => {
@@ -30,6 +31,7 @@ const EditItem = ({
   const saveData = (event) => {
     event.preventDefault();
     setUpdateModalOpen(!updateModalOpen);
+    setUpdateItemData(null);
     changeData(editValues);
   };
 
@@ -43,6 +45,7 @@ const EditItem = ({
         <ToastHeader
           toggle={() => {
             setUpdateModalOpen(!updateModalOpen);
+            setUpdateItemData(null);
           }}
         >
           Update Data
@@ -77,8 +80,33 @@ const EditItem = ({
                   />
                 </FormGroup>
               </Col>
+              <Col md={6}>
+                <FormGroup>
+                  <Label for="color">Color</Label>
+                  <Input
+                    id="color"
+                    name="color"
+                    placeholder="Enter color"
+                    min="1"
+                    value={editValues.color}
+                    type="color"
+                    onChange={handleChange}
+                  />
+                </FormGroup>
+              </Col>
             </Row>
-            <Button color="success">Save</Button>
+            <Button
+              color="success"
+              disabled={
+                !(
+                  editValues["itemName"] &&
+                  editValues["quantity"] &&
+                  editValues["color"]
+                )
+              }
+            >
+              Save
+            </Button>
           </Form>
         </ToastBody>
       </Toast>

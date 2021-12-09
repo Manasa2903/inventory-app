@@ -14,19 +14,19 @@ const Electronics = () => {
       id: 1,
       itemName: "Mac Book",
       quantity: 20,
-      color: "grey",
+      color: "#b1a9a9",
     },
     {
       id: 2,
       itemName: "One Plus",
       quantity: 17,
-      color: "black",
+      color: "#080808",
     },
     {
       id: 3,
       itemName: "Hp Laptop",
       quantity: 74,
-      color: "silver",
+      color: "#b1aaaa",
     },
   ]);
 
@@ -43,6 +43,7 @@ const Electronics = () => {
     );
     setUpdateItemData(...updateItemDetails);
     setUpdateModalOpen(!updateModalOpen);
+    window.scroll(0, 0);
     //console.log(...updateItemDetails);
   };
 
@@ -86,20 +87,25 @@ const Electronics = () => {
           setUpdateModalOpen={setUpdateModalOpen}
           editedDetails={updateItemData}
           changeData={changeData}
+          setUpdateItemData={setUpdateItemData}
         />
       )}
       <ListGroup>
         <Container>
           <Row>
-            {electronicsList.map((eachItem) => (
-              <ElectronicItem
-                key={eachItem.id}
-                itemDetails={eachItem}
-                deleteItem={deleteElectronics}
-                updateItem={updateItem}
-                updateModalOpen={updateModalOpen}
-              />
-            ))}
+            {electronicsList.length > 0 ? (
+              electronicsList.map((eachItem) => (
+                <ElectronicItem
+                  key={eachItem.id}
+                  itemDetails={eachItem}
+                  deleteItem={deleteElectronics}
+                  updateItem={updateItem}
+                  updateModalOpen={updateModalOpen}
+                />
+              ))
+            ) : (
+              <p className="text-danger text-center">No Items to display</p>
+            )}
           </Row>
         </Container>
       </ListGroup>

@@ -5,7 +5,7 @@ const ElectronicItem = ({
   updateItem,
   updateModalOpen,
 }) => {
-  const { itemName, quantity, id } = itemDetails;
+  const { itemName, quantity, id, color } = itemDetails;
   //const [updateItem, setUpdateItem] = useState(false);
 
   return (
@@ -13,10 +13,23 @@ const ElectronicItem = ({
       <ListGroupItem className="cards">
         <h1 className="item-heading">{itemName}</h1>
         <p className="quantity">Quantity : {quantity}</p>
-        <p>{id}</p>
+        <h6 className="color">
+          Color:{" "}
+          <p
+            style={{
+              backgroundColor: color,
+              borderRadius: "10px",
+              width: "30px",
+              height: "25px",
+            }}
+            className="color-badge"
+          ></p>
+          {color}
+        </h6>
         <Button
           color="danger"
           className="control-buttons"
+          disabled={updateModalOpen}
           onClick={() => {
             deleteItem(id);
           }}
