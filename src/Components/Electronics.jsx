@@ -14,16 +14,19 @@ const Electronics = () => {
       id: 1,
       itemName: "Mac Book",
       quantity: 20,
+      color: "grey",
     },
     {
       id: 2,
       itemName: "One Plus",
       quantity: 17,
+      color: "black",
     },
     {
       id: 3,
       itemName: "Hp Laptop",
       quantity: 74,
+      color: "silver",
     },
   ]);
 
@@ -40,14 +43,13 @@ const Electronics = () => {
     );
     setUpdateItemData(...updateItemDetails);
     setUpdateModalOpen(!updateModalOpen);
-    console.log(...updateItemDetails);
+    //console.log(...updateItemDetails);
   };
 
   const changeData = (editValues) => {
     const editedList = electronicsList.map((eachItem) => {
       if (eachItem.id === editValues.id) {
-        eachItem.itemName = editValues.itemName;
-        eachItem.quantity = editValues.quantity;
+        eachItem = editValues;
       }
       return eachItem;
     });
@@ -57,15 +59,15 @@ const Electronics = () => {
 
   return (
     <>
-      <h1>Inventory App</h1>
-      <div>
+      <h1 className="main-heading">Inventory App</h1>
+      <div className="button">
         <Button
-          color="danger"
+          color="primary"
           onClick={() => {
             setModalOpen(!modalOpen);
           }}
         >
-          Click Me
+          Add New Items
         </Button>
       </div>
       {modalOpen && (
@@ -95,6 +97,7 @@ const Electronics = () => {
                 itemDetails={eachItem}
                 deleteItem={deleteElectronics}
                 updateItem={updateItem}
+                updateModalOpen={updateModalOpen}
               />
             ))}
           </Row>
