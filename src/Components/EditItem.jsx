@@ -34,11 +34,7 @@ const EditItem = ({
 
   return (
     <div className="updateModal">
-      <Toast
-        toggle={() => {
-          setUpdateModalOpen(!updateModalOpen);
-        }}
-      >
+      <Toast isOpen>
         <ToastHeader
           toggle={() => {
             setUpdateModalOpen(!updateModalOpen);
