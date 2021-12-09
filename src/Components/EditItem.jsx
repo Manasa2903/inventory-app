@@ -1,54 +1,46 @@
+import { useState } from "react";
 import {
   Modal,
-  ModalBody,
   ModalHeader,
-  Button,
-  Col,
-  Label,
-  Input,
+  ModalBody,
   Form,
   FormGroup,
+  Input,
+  Label,
   Row,
+  Col,
+  Button,
 } from "reactstrap";
 
-import { useState } from "react";
-
-const AddElectronic = ({
-  modalOpen,
-  setModalOpen,
-  electronicsList,
-  setElectronicsList,
-  id,
-  setId,
+const EditItem = ({
+  updateModalOpen,
+  setUpdateModalOpen,
+  editedDetails,
+  changeData,
 }) => {
-  const [inputVal, setInputVal] = useState({});
-
+  const [editValues, setEditValues] = useState(editedDetails);
   const handleChange = (event) => {
     const { name, value } = event.target;
-    const newItem = { ...inputVal, [name]: value, id };
-    //console.log(newItem);
-    setInputVal(newItem);
-    //console.log(id);
+    setEditValues((prevState) => ({ ...prevState, [name]: value }));
   };
 
-  const addNewItem = (event) => {
+  const saveData = (event, id) => {
     event.preventDefault();
-    setId(id + 1);
-    setElectronicsList([...electronicsList, inputVal]);
-    setModalOpen(!modalOpen);
-    //console.log(id);
+    setUpdateModalOpen(!updateModalOpen);
+    changeData(editValues);
   };
+
   return (
     <Modal isOpen>
       <ModalHeader
         toggle={() => {
-          setModalOpen(!modalOpen);
+          setUpdateModalOpen(!updateModalOpen);
         }}
       >
-        Add Electronic Items
+        Modal title
       </ModalHeader>
       <ModalBody>
-        <Form onSubmit={addNewItem}>
+        <Form onSubmit={saveData}>
           <Row form>
             <Col md={6}>
               <FormGroup>
@@ -58,6 +50,7 @@ const AddElectronic = ({
                   name="itemName"
                   placeholder="Enter Item Name"
                   type="text"
+                  value={editValues.itemName}
                   onChange={handleChange}
                 />
               </FormGroup>
@@ -70,19 +63,18 @@ const AddElectronic = ({
                   name="quantity"
                   placeholder="Enter quantity"
                   min="1"
+                  value={editValues.quantity}
                   type="number"
                   onChange={handleChange}
                 />
               </FormGroup>
             </Col>
           </Row>
-          <Button disabled={!(inputVal["itemName"] && inputVal["quantity"])}>
-            Add
-          </Button>
+          <Button>Save</Button>
         </Form>
       </ModalBody>
     </Modal>
   );
 };
 
-export default AddElectronic;
+export default EditItem;
