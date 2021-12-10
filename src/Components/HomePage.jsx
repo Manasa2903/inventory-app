@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import ElectronicItem from "./ElectronicItem";
-import { Button, Container, Row, ListGroup } from "reactstrap";
+import { Button, Container, Row, ListGroup, Input } from "reactstrap";
 import AddElectronic from "./AddElectronic";
 import EditItem from "./EditItem";
 
@@ -9,6 +9,8 @@ const HomePage = () => {
   const [updateModalOpen, setUpdateModalOpen] = useState(false);
   const [id, setId] = useState(4);
   const [updateItemData, setUpdateItemData] = useState(null);
+  const [searchVal, setSearchVal] = useState("");
+  const [filteredList, setFilteredList] = useState([]);
   const [electronicsList, setElectronicsList] = useState([
     {
       id: 1,
@@ -63,10 +65,17 @@ const HomePage = () => {
     setElectronicsList(editedList);
   };
 
+  useEffect(() => {
+    const filteredValues = electronicsList.filter((eachItem) =>
+      eachItem.itemName.toLowerCase().includes(searchVal.toLowerCase())
+    );
+    setFilteredList(filteredValues);
+  }, [searchVal, electronicsList]);
+
   return (
     <>
       <h1 className="main-heading">Inventory App</h1>
-      <div className="button">
+      <div className="d-flex flex-column align-items-center">
         <Button
           color="primary"
           onClick={() => {
@@ -75,6 +84,17 @@ const HomePage = () => {
         >
           Add New Items
         </Button>
+
+        <div className="search-input">
+          <Input
+            placeholder="Search here..."
+            className="w-100"
+            type="search"
+            onChange={(event) => {
+              setSearchVal(event.target.value);
+            }}
+          />
+        </div>
       </div>
       {modalOpen && (
         <AddElectronic
@@ -98,8 +118,8 @@ const HomePage = () => {
       <ListGroup>
         <Container>
           <Row>
-            {electronicsList.length > 0 ? (
-              electronicsList.map((eachItem) => (
+            {filteredList.length > 0 ? (
+              filteredList.map((eachItem) => (
                 <ElectronicItem
                   key={eachItem.id}
                   itemDetails={eachItem}
