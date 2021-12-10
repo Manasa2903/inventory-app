@@ -4,7 +4,7 @@ import { Button, Container, Row, ListGroup } from "reactstrap";
 import AddElectronic from "./AddElectronic";
 import EditItem from "./EditItem";
 
-const Electronics = () => {
+const HomePage = () => {
   const [modalOpen, setModalOpen] = useState(false);
   const [updateModalOpen, setUpdateModalOpen] = useState(false);
   const [id, setId] = useState(4);
@@ -59,7 +59,7 @@ const Electronics = () => {
       }
       return eachItem;
     });
-    console.log(editedList);
+    //console.log(editedList);
     setElectronicsList(editedList);
   };
 
@@ -118,4 +118,4 @@ const Electronics = () => {
   );
 };
 
-export default Electronics;
+export default HomePage;

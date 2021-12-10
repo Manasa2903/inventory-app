@@ -1,11 +1,11 @@
 import "./App.css";
-import Electronics from "./Components/Electronics";
+import HomePage from "./Components/HomePage";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
   return (
     <>
-      <Electronics />
+      <HomePage />
     </>
   );
 }
