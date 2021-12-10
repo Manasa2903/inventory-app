@@ -12,7 +12,7 @@ const Electronics = () => {
   const [electronicsList, setElectronicsList] = useState([
     {
       id: 1,
-      itemName: "Mac Book Pro",
+      itemName: "Mac Pro",
       quantity: 20,
       color: "#b1a9a9",
       imageUrl: "https://m.media-amazon.com/images/I/71an9eiBxpL._SL1500_.jpg",
@@ -20,10 +20,10 @@ const Electronics = () => {
     {
       id: 2,
       itemName: "One Plus",
-      quantity: 17,
+      quantity: 150,
       color: "#080808",
       imageUrl:
-        "https://www.gizmochina.com/wp-content/uploads/2020/03/OnePlus-8-1.jpg",
+        "https://www.reliancedigital.in/medias/OnePlus-Nord-CE-Smartphone-491996837-i-1-1200Wx1200H?context=bWFzdGVyfGltYWdlc3w3OTk4NXxpbWFnZS9qcGVnfGltYWdlcy9oYWQvaDBlLzk1Njg3NzkwMTAwNzguanBnfDY0NmIwZTg4YmVjMGZiYjVlYWZhYjA5NGVlZGY5Yjc3YWFkOTM2YzY1MDBmNTlkZDE3MmViZWFhODA5YzNmZmI",
     },
     {
       id: 3,
@@ -31,7 +31,7 @@ const Electronics = () => {
       quantity: 74,
       color: "#b1aaaa",
       imageUrl:
-        "https://5.imimg.com/data5/HI/LO/MY-24587489/hp-laptop-500x500.jpg",
+        "https://5.imimg.com/data5/JM/PC/MY-26541044/hp-pavilion-x360-14m-ba013dx-500x500.jpg",
     },
   ]);
 

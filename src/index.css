@@ -48,6 +48,21 @@
     font-size: 16px;
 }
 
+.danger {
+    color: #dc3545;
+    margin-right: 10px;
+}
+
+.success {
+    color: #198754;
+    margin-right: 10px;
+}
+
+.warning {
+    color: #ffc107;
+    margin-right: 10px;
+}
+
 .updateModal {
     display: flex;
     justify-content: center;
@@ -55,6 +70,6 @@
 
 .electronic-image {
     width: 70%;
-    height: 200px;
+    height: 180px;
     margin-bottom: 10px;
 }

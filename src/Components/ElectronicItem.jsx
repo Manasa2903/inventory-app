@@ -1,4 +1,5 @@
-import { ListGroupItem, Button, Col } from "reactstrap";
+import { ListGroupItem, Button, Col, Badge } from "reactstrap";
+
 const ElectronicItem = ({
   itemDetails,
   deleteItem,
@@ -7,7 +8,22 @@ const ElectronicItem = ({
 }) => {
   const { itemName, quantity, id, color, imageUrl } = itemDetails;
   //const [updateItem, setUpdateItem] = useState(false);
+
   const notFoundImage = "https://cdn.browshot.com/static/images/not-found.png";
+  let displayColor;
+  let text;
+
+  if (quantity > 100) {
+    displayColor = "success";
+    text = "In Stock";
+  } else if (quantity < 30) {
+    displayColor = "danger";
+    text = "Limited Stock";
+  } else {
+    displayColor = "warning";
+    text = "Best Seller";
+  }
+
   return (
     <Col xs="12" sm="6" md="4" lg="3">
       <ListGroupItem className="cards">
@@ -17,7 +33,10 @@ const ElectronicItem = ({
           className="electronic-image"
         />
         <h1 className="item-heading">{itemName}</h1>
-        <p className="quantity">Quantity : {quantity}</p>
+        <p className="quantity">
+          Quantity : <span className={displayColor}>{quantity}</span>
+          <Badge color={displayColor}>{text}</Badge>
+        </p>
         <h6 className="color">
           Color:{" "}
           <p
