@@ -68,9 +68,22 @@ const AddElectronic = ({
                 <Input
                   id="quantity"
                   name="quantity"
-                  placeholder="Enter quantity"
+                  placeholder="Enter Quantity"
                   min="1"
                   type="number"
+                  onChange={handleChange}
+                />
+              </FormGroup>
+            </Col>
+            <Col md={6}>
+              <FormGroup>
+                <Label for="imageUrl">Image Url</Label>
+                <Input
+                  id="imageUrl"
+                  name="imageUrl"
+                  placeholder="Enter Image Url (optional)"
+                  min="1"
+                  type="url"
                   onChange={handleChange}
                 />
               </FormGroup>

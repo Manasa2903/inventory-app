@@ -5,12 +5,17 @@ const ElectronicItem = ({
   updateItem,
   updateModalOpen,
 }) => {
-  const { itemName, quantity, id, color } = itemDetails;
+  const { itemName, quantity, id, color, imageUrl } = itemDetails;
   //const [updateItem, setUpdateItem] = useState(false);
-
+  const notFoundImage = "https://cdn.browshot.com/static/images/not-found.png";
   return (
     <Col xs="12" sm="6" md="4" lg="3">
       <ListGroupItem className="cards">
+        <img
+          src={imageUrl ? imageUrl : notFoundImage}
+          alt={itemName}
+          className="electronic-image"
+        />
         <h1 className="item-heading">{itemName}</h1>
         <p className="quantity">Quantity : {quantity}</p>
         <h6 className="color">

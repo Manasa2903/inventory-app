@@ -31,15 +31,30 @@
 .cards {
     margin-bottom: 10px;
     margin-top: 20px;
+    text-align: center;
 }
 
 .item-heading {
     color: blueviolet;
     font-size: 25px;
     font-weight: bold;
+    text-align: left;
+}
+
+.quantity {
+    text-align: left;
+    color: grey;
+    font-weight: bold;
+    font-size: 16px;
 }
 
 .updateModal {
     display: flex;
     justify-content: center;
+}
+
+.electronic-image {
+    width: 70%;
+    height: 200px;
+    margin-bottom: 10px;
 }

@@ -12,21 +12,26 @@ const Electronics = () => {
   const [electronicsList, setElectronicsList] = useState([
     {
       id: 1,
-      itemName: "Mac Book",
+      itemName: "Mac Book Pro",
       quantity: 20,
       color: "#b1a9a9",
+      imageUrl: "https://m.media-amazon.com/images/I/71an9eiBxpL._SL1500_.jpg",
     },
     {
       id: 2,
       itemName: "One Plus",
       quantity: 17,
       color: "#080808",
+      imageUrl:
+        "https://www.gizmochina.com/wp-content/uploads/2020/03/OnePlus-8-1.jpg",
     },
     {
       id: 3,
       itemName: "Hp Laptop",
       quantity: 74,
       color: "#b1aaaa",
+      imageUrl:
+        "https://5.imimg.com/data5/HI/LO/MY-24587489/hp-laptop-500x500.jpg",
     },
   ]);
 

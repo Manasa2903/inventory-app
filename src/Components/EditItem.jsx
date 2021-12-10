@@ -46,7 +46,7 @@ const EditItem = ({
         <ToastBody>
           <Form onSubmit={saveData}>
             <Row form>
-              <Col md={6}>
+              <Col>
                 <FormGroup>
                   <Label for="item">Item Name</Label>
                   <Input
@@ -59,7 +59,7 @@ const EditItem = ({
                   />
                 </FormGroup>
               </Col>
-              <Col md={6}>
+              <Col>
                 <FormGroup>
                   <Label for="quantity">Quantity</Label>
                   <Input
@@ -73,7 +73,21 @@ const EditItem = ({
                   />
                 </FormGroup>
               </Col>
-              <Col md={6}>
+              <Col>
+                <FormGroup>
+                  <Label for="imageUrl">Image Url</Label>
+                  <Input
+                    id="imageUrl"
+                    name="imageUrl"
+                    value={editValues.imageUrl}
+                    placeholder="Enter Image Url (optional)"
+                    min="1"
+                    type="url"
+                    onChange={handleChange}
+                  />
+                </FormGroup>
+              </Col>
+              <Col>
                 <FormGroup>
                   <Label for="color">Color</Label>
                   <Input
