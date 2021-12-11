@@ -7,10 +7,10 @@ import EditItem from "./EditItem";
 const HomePage = () => {
   const [modalOpen, setModalOpen] = useState(false);
   const [updateModalOpen, setUpdateModalOpen] = useState(false);
-  const [id, setId] = useState(4);
   const [updateItemData, setUpdateItemData] = useState(null);
   const [searchVal, setSearchVal] = useState("");
   const [filteredList, setFilteredList] = useState([]);
+  const [filterValue, setFilterValue] = useState("All");
   const [electronicsList, setElectronicsList] = useState([
     {
       id: 1,
@@ -35,7 +35,16 @@ const HomePage = () => {
       imageUrl:
         "https://5.imimg.com/data5/JM/PC/MY-26541044/hp-pavilion-x360-14m-ba013dx-500x500.jpg",
     },
+    {
+      id: 4,
+      itemName: "iPhone 13",
+      quantity: 200,
+      color: "#faddd7",
+      imageUrl: "https://m.media-amazon.com/images/I/61l9ppRIiqL._SL1500_.jpg",
+    },
   ]);
+
+  const [id, setId] = useState(electronicsList.length + 1);
 
   const deleteElectronics = (id) => {
     const filteredData = electronicsList.filter(
@@ -66,16 +75,31 @@ const HomePage = () => {
   };
 
   useEffect(() => {
-    const filteredValues = electronicsList.filter((eachItem) =>
-      eachItem.itemName.toLowerCase().includes(searchVal.toLowerCase())
-    );
-    setFilteredList(filteredValues);
-  }, [searchVal, electronicsList]);
+    if (searchVal !== "") {
+      const filteredValues = electronicsList.filter((eachItem) =>
+        eachItem.itemName.toLowerCase().includes(searchVal.toLowerCase())
+      );
+      setFilteredList(filteredValues);
+    } else {
+      const filteredItems = electronicsList.filter((eachItem) => {
+        if (filterValue === "All") {
+          return eachItem;
+        } else if (filterValue === "Limited Stock") {
+          return eachItem.quantity < 30;
+        } else if (filterValue === "In Stock") {
+          return eachItem.quantity > 100;
+        } else {
+          return eachItem.quantity >= 30 && eachItem.quantity <= 100;
+        }
+      });
+      setFilteredList(filteredItems);
+    }
+  }, [searchVal, filterValue, electronicsList]);
 
   return (
     <>
       <h1 className="main-heading">Inventory App</h1>
-      <div className="d-flex flex-column align-items-center">
+      <div className="text-center">
         <Button
           color="primary"
           onClick={() => {
@@ -84,18 +108,8 @@ const HomePage = () => {
         >
           Add New Items
         </Button>
-
-        <div className="search-input">
-          <Input
-            placeholder="Search here..."
-            className="w-100"
-            type="search"
-            onChange={(event) => {
-              setSearchVal(event.target.value);
-            }}
-          />
-        </div>
       </div>
+
       {modalOpen && (
         <AddElectronic
           modalOpen={modalOpen}
@@ -117,6 +131,32 @@ const HomePage = () => {
       )}
       <ListGroup>
         <Container>
+          <div className="filter-search-container">
+            <div className="filter-container">
+              <Input
+                id="exampleSelect"
+                name="select"
+                type="select"
+                value={filterValue}
+                onChange={(event) => setFilterValue(event.target.value)}
+              >
+                <option>All</option>
+                <option>Limited Stock</option>
+                <option>In Stock</option>
+                <option>Best Seller</option>
+              </Input>
+            </div>
+            <div className="search-input">
+              <Input
+                placeholder="Search all items..."
+                className="w-100"
+                type="search"
+                onChange={(event) => {
+                  setSearchVal(event.target.value);
+                }}
+              />
+            </div>
+          </div>
           <Row>
             {filteredList.length > 0 ? (
               filteredList.map((eachItem) => (
