@@ -99,7 +99,7 @@ const HomePage = () => {
   return (
     <>
       <h1 className="main-heading">Inventory App</h1>
-      <div className="text-center">
+      <div className="text-center button">
         <Button
           color="primary"
           onClick={() => {
