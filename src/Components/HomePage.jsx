@@ -64,14 +64,15 @@ const HomePage = () => {
   };
 
   const changeData = (editValues) => {
-    const editedList = electronicsList.map((eachItem) => {
-      if (eachItem.id === editValues.id) {
-        eachItem = editValues;
-      }
-      return eachItem;
+    setElectronicsList((prevState) => {
+      const editedList = prevState.map((eachItem) => {
+        if (eachItem.id === editValues.id) {
+          eachItem = editValues;
+        }
+        return eachItem;
+      });
+      return editedList;
     });
-    //console.log(editedList);
-    setElectronicsList(editedList);
   };
 
   useEffect(() => {
